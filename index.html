@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Xasan Nosirov - Software Engineer specializing in backend systems, microservices, and Go." />
+  <meta property="og:title" content="Xasan Nosirov - Software Engineer" />
+  <meta property="og:description" content="Software Engineer with 2+ years of experience in microservices, Go, PostgreSQL, and distributed systems." />
+  <title>Xasan Nosirov - Software Engineer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --surface: #ffffff;
+      --border: #e8e4dc;
+      --text: #1a1915;
+      --muted: #7a7670;
+      --accent: #2d5a27;
+      --accent-light: #e8f0e6;
+      --mono: 'DM Mono', monospace;
+      --serif: 'DM Serif Display', serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(247, 245, 240, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 max(2rem, calc((100% - 720px) / 2));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* MAIN CONTAINER */
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 80px 0 64px;
+      border-bottom: 1px solid var(--border);
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-bio {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+      font-weight: 300;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.18s ease;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: #1e3e1a; }
+
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: transparent;
+    }
+
+    .btn-ghost:hover { border-color: var(--muted); color: var(--text); }
+
+    /* SECTIONS */
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--border);
+      animation: fadeUp 0.6s ease both;
+    }
+
+    section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    /* EXPERIENCE */
+    .experience-item {
+      margin-bottom: 40px;
+    }
+
+    .experience-item:last-child { margin-bottom: 0; }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .exp-title {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .exp-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      white-space: nowrap;
+      padding-top: 4px;
+    }
+
+    .exp-company {
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .exp-company a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .exp-company a:hover { text-decoration: underline; }
+
+    .exp-badge {
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 3px;
+      background: var(--accent-light);
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .exp-bullets li {
+      font-size: 14px;
+      color: var(--muted);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--border);
+      font-size: 12px;
+    }
+
+    .exp-tags {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 3px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 8px;
+    }
+
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--surface);
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .skill-item:hover {
+      border-color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    .skill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* PROJECTS */
+    .project-item {
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--surface);
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+
+    .project-item:last-child { margin-bottom: 0; }
+
+    .project-item:hover { border-color: var(--accent); }
+
+    .project-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .project-name {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .project-link {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .project-link:hover { text-decoration: underline; }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    /* EDUCATION */
+    .edu-item {
+      margin-bottom: 28px;
+    }
+
+    .edu-item:last-child { margin-bottom: 0; }
+
+    .edu-school {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .edu-degree {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .edu-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 2rem;
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    /* DIVIDER */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 32px 0;
+    }
+
+    /* ANIMATION */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    section:nth-child(2) { animation-delay: 0.1s; }
+    section:nth-child(3) { animation-delay: 0.2s; }
+    section:nth-child(4) { animation-delay: 0.3s; }
+    section:nth-child(5) { animation-delay: 0.4s; }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+      nav { padding: 0 1.25rem; }
+      main { padding: 0 1.25rem; }
+      .hero { padding: 56px 0 48px; }
+      h1 { font-size: 2rem; }
+      .nav-links { gap: 1.2rem; }
+      .skills-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+      footer { padding: 32px 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="#">xasannosir</a>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-tag">Available for opportunities</div>
+      <h1>Xasan Nosirov</h1>
+      <p class="hero-bio">
+        Software Engineer with 2+ years of experience specializing in microservices architecture.
+        I build scalable backend systems and enjoy finding smart, simple solutions to make things run better.
+      </p>
+      <div class="hero-links">
+        <a href="mailto:hello@xasannosir.com" class="btn btn-primary">
+          hello@xasannosir.com
+        </a>
+        <a href="https://github.com/xasannosir" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+        <a href="https://linkedin.com/in/xasannosir" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+        <a href="https://leetcode.com/u/xasannosir" target="_blank" rel="noopener" class="btn btn-ghost">LeetCode</a>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-label">Experience</div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <div class="exp-title">Software Engineer</div>
+          <div class="exp-date">May 2025 — Present</div>
+        </div>
+        <div class="exp-company">
+          Hamroh Development Business
+          <span class="exp-badge">Full-time</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Built and maintained end-to-end backend features for automotive service platform.</li>
+          <li>Automated Docker-based infrastructure and CI/CD pipelines, improving deployment reliability.</li>
+          <li>Integrated third-party Payment and SMS services.</li>
+          <li>Lead backend team and make technical architecture decisions.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tag">Go</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Redis</span>
+          <span class="tag">gRPC</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Microservices</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <div class="exp-title">Teacher Assistant</div>
+          <div class="exp-date">Nov 2024 — May 2025</div>
+        </div>
+        <div class="exp-company">
+          Najot Ta'lim
+          <span class="exp-badge">Part-time</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Helped students understand Computer Science fundamentals, Algorithms and Data Structures.</li>
+          <li>Reviewed homework, provided feedback, and supported the lead instructor.</li>
+        </ul>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="experience-item">
+        <div class="exp-header">
+          <div class="exp-title">Software Engineer Intern</div>
+          <div class="exp-date">Jul 2024 — Sep 2024</div>
+        </div>
+        <div class="exp-company">
+          GeedBro
+          <span class="exp-badge">Internship</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Practiced Docker deployments targeting zero-downtime releases.</li>
+          <li>Designed database and WebSocket architecture for practical projects.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tag">Go</span>
+          <span class="tag">Docker</span>
+          <span class="tag">WebSocket</span>
+          <span class="tag">PostgreSQL</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-label">Technical Skills</div>
+      <div class="skills-grid">
+        <div class="skill-item"><span class="skill-dot"></span>Go</div>
+        <div class="skill-item"><span class="skill-dot"></span>PostgreSQL</div>
+        <div class="skill-item"><span class="skill-dot"></span>MySQL</div>
+        <div class="skill-item"><span class="skill-dot"></span>Redis</div>
+        <div class="skill-item"><span class="skill-dot"></span>gRPC</div>
+        <div class="skill-item"><span class="skill-dot"></span>REST APIs</div>
+        <div class="skill-item"><span class="skill-dot"></span>WebSocket</div>
+        <div class="skill-item"><span class="skill-dot"></span>RabbitMQ</div>
+        <div class="skill-item"><span class="skill-dot"></span>Docker</div>
+        <div class="skill-item"><span class="skill-dot"></span>Linux</div>
+        <div class="skill-item"><span class="skill-dot"></span>Git</div>
+        <div class="skill-item"><span class="skill-dot"></span>Microservices</div>
+        <div class="skill-item"><span class="skill-dot"></span>CI/CD</div>
+        <div class="skill-item"><span class="skill-dot"></span>SQL</div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-label">Projects</div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <div class="project-name">gin-redis-cache</div>
+          <a href="https://github.com/xasannosir/gin-redis-cache" target="_blank" rel="noopener" class="project-link">
+            GitHub →
+          </a>
+        </div>
+        <p class="project-desc">
+          Gin middleware for HTTP response caching and cache invalidation. Easy to integrate and control, built to speed up caching development.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">Go</span>
+          <span class="tag">Redis</span>
+          <span class="tag">Gin</span>
+          <span class="tag">Middleware</span>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <div class="project-name">leetcode solutions</div>
+          <a href="https://github.com/xasannosir/leetcode" target="_blank" rel="noopener" class="project-link">
+            GitHub →
+          </a>
+        </div>
+        <p class="project-desc">
+          467 problems solved. Rank 221,482 globally on LeetCode. Primary language: Go.
+        </p>
+        <div class="exp-tags">
+          <span class="tag">Go</span>
+          <span class="tag">Algorithms</span>
+          <span class="tag">Data Structures</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="section-label">Education</div>
+
+      <div class="edu-item">
+        <div class="edu-school">Najot Ta'lim</div>
+        <div class="edu-degree">Computer Programming — Bootcamp Backend Go</div>
+        <div class="edu-date">May 2023 — May 2024</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-label" style="margin-top: 0; margin-bottom: 20px;">Certifications</div>
+      <div class="edu-item">
+        <div class="edu-school" style="font-size: 1rem;">Programming on Golang</div>
+        <div class="edu-degree">Stepik · Issued Dec 2023</div>
+        <a href="https://stepik.org/cert/2305391?lang=en" target="_blank" rel="noopener"
+           style="font-family: var(--mono); font-size: 11px; color: var(--accent); text-decoration: none; display: inline-block; margin-top: 6px;">
+          View credential →
+        </a>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-label" style="margin-top: 0; margin-bottom: 20px;">Languages</div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; max-width: 300px;">
+          <span style="font-size: 14px; color: var(--text);">Uzbek</span>
+          <span style="font-family: var(--mono); font-size: 11px; color: var(--muted);">Native</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; max-width: 300px;">
+          <span style="font-size: 14px; color: var(--text);">English</span>
+          <span style="font-family: var(--mono); font-size: 11px; color: var(--muted);">Full professional</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-copy">© 2026 Xasan Nosirov</div>
+    <div class="footer-links">
+      <a href="mailto:hello@xasannosir.com">hello@xasannosir.com</a>
+      <a href="https://github.com/xasannosir" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/xasannosir" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+</body>
+</html>
